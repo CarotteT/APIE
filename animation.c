@@ -6,11 +6,11 @@
 #include <time.h>
 
 
-void pendu(int choix_incorrecte) {
+void pendu(int choix_incorrect) {
     
     system("clear");
     printf("\n");
-    switch (choix_incorrecte) {
+    switch (choix_incorrect) {
         case 0:
             
         printf("         (                           (                           (\n"
@@ -160,7 +160,7 @@ int menu(){
     printf("4. Quit\n");
     printf("-----------------------------\n");
 
-    printf("tape your choice >>>") ;
+    printf("Tape your choice >>>") ;
     scanf("%d", &choice);
     switch(choice){
         case 1:
@@ -180,7 +180,7 @@ int menu(){
 int theme(){
 
     printf("\n -----------------------------------------\n");
-    printf("| 1.animal\t 2.foods\t 3.movies |\n| 4.music\t 5.school\t 6.space  |\n");
+    printf("| 1.animals\t 2.foods\t 3.movies |\n| 4.music\t 5.school\t 6.space  |\n");
     printf(" -----------------------------------------\n");
 
     printf("Select the theme of the word >>> ");
@@ -194,9 +194,9 @@ int theme(){
 
 int level(){
 
-    printf("\n -----------------------------------------\n");
-    printf("| 1.easy\t 2.medium\t 3.hard |\n");
-    printf(" -----------------------------------------\n");
+    printf("\n ----------------------------------------------\n");
+    printf("| 1.easy\t 2.intermediate\t        3.hard |\n");
+    printf(" ----------------------------------------------\n");
 
     printf("Select the difficulty >>> ");
 
@@ -228,7 +228,7 @@ void infos(){
     printf("\n-------------------------------[ Rules ]-------------------------------\n");
     printf("Le jeu du pendu est un jeu de mots dans lequel un joueur doit deviner un mot en suggérant des lettres. \n Déroulement du jeu : \n 1. Choix du thème du mot secret et son niveau de difficulté (Easy, Intermediate, Difficult) : Le joueur choisit un thème ainsi que la difficulté de son mot secret. Ce dernier est choisi aléatoirement par le programme et est caché au joueur. \n 2. Affichage du mot partiel : Le mot secret affiche le nombre de lettres du mot sous forme de tirets bas. \n 3. Saisie des lettres : Le joueur tente de deviner le mot en saisissant une lettre à la fois. \n 4. Validation de la lettre : Le programme vérifie si la lettre devinée est bien dans le mot secret. Si c'est le cas, toutes les occurrences de cette lettre sont révélées dans le mot secret. \n 5. Affichage du pendu : Pour chaque lettre incorrecte proposée par le joueur, une partie des tartes est partiellement mangée. Le dessin des tartes est représenté par trois tartes. Les parties des tartes sont mangées en fonction du nombre d'erreurs du joueur. \n 6. Nombre d'essais autorisés : Six erreurs sont autorisées avant que toutes les tartes ne soient complètement mangées. \n 7. Fin du jeu : \n -> Victoire : Le joueur gagne s'il parvient à deviner le mot avant que les tartes ne soient complètement mangées en totalité. \n -> Défaite : Le joueur perd s'il atteint le nombre maximal d'essais permises avant d'avoir deviné le mot.\n");    
     printf("\n-------------------------------[ Infos+ ]-------------------------------\n");
-    printf("Bonjour, bienvenue dans notre jeu de pendu APPLE PIE. Nous sommes trois étudiants de l'xxxxx : mr X, madame O et madame P, les créateurs de ce jeu. \n Plongez dans l'univers de notre jeu du pendu. Choisissez parmi une variété de thèmes passionnants : Animaux, Nourriture, Musique et bien plus encore. Explorez des niveaux de difficulté pour tous les niveaux d'expérience. \n Bien connu des cours de récréation, relevez le défi du pendu maintenant ! \n");
+    printf("Bonjour, bienvenue dans notre jeu de pendu APPLE PIE. Nous sommes trois étudiants de l'ESIEA : Ahmed AMROUCHI, Nolwenn NIZARD et Caroline TRUONG, les créateurs de ce jeu. \n Plongez dans l'univers de notre jeu du pendu. Choisissez parmi une variété de thèmes passionnants : Animaux, Nourriture, Musique et bien plus encore. Explorez des niveaux de difficulté pour tous les niveaux d'expérience. \n Bien connu des cours de récréation, relevez le défi du pendu maintenant ! \n");
     printf("\n------------------------------------------------------------------------\n");
 
 }

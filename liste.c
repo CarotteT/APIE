@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#include "propriete.c"
+
+char* liste_mots_default[MOT_MAX] = {"acrobatique", "bouillonnement", "catastrophique", "delicatement", "efficacement", "fantastiquement", "genereusement", "harmonieusement", "illuminer", "jubilation", "kangourou", "luminescent", "merveilleusement", "nuageux", "oxygene", "precieusement", "quadrilatere", "rhapsodie", "sensationnel", "tenebreux"};
+
+char* animal_facile[MOT_MAX] = {"chat", "chien", "singe", "poule", "canard", "lapin", "tigre", "lion", "perroquet", "furet", "panda", "faucon", "mouton", "abeille", "cochon", "poussin", "cheval", "éléphant", "hamster", "koala"};
+char* nourriture_facile[MOT_MAX] = {"pizza", "pomme", "banane", "riz", "poire", "poulet", "salade", "yaourt", "bouilli", "crepe", "tomate", "melon", "haricot", "oignon", "fromage", "miel", "jusdorange", "cassis", "chocolat", "pain"};
+char* musique_facile[MOT_MAX] = {"piano", "guitare", "flute", "clarinette", "saxophone", "trompette", "violon", "orgue", "tambour", "harpe", "ukulele", "xylophone", "accordeon", "cymbale", "bongo", "cornemuse", "triangle", "triangle", "hautbois", "maracas"};
+char* film_facile[MOT_MAX] = {"coco", "moana", "zootopia", "ratatouille", "frozen", "shrek", "brave", "aladdin", "minions", "cars", "cinderella", "findingnemo", "mulan", "toy story", "tangled", "up", "inside out", "lion king", "mowgli", "beauty and the beast"};
+char* ecole_facile[MOT_MAX] = {"cours", "professeur", "eleve", "tableau", "calcul", "lecture", "ecriture", "examen", "college", "lycee", "ecole", "lecon", "livre", "education", "savoir", "apprentissage", "note", "etudiant", "diplome", "connaissance"};
+char* espace_facile[MOT_MAX] = {"lune", "etoile", "soleil", "mars", "jupiter", "saturne", "neptune", "pluton", "galaxie", "univers", "astre", "planete", "orbite", "comete", "cosmos", "espace", "astronaute", "alien", "roquette", "satellite"};
+
+char* animal_moyen[MOT_MAX] = {"girafe", "hippopotame", "crocodile", "chimpanze", "pingouin", "pangolin", "koala", "ornithorynque", "kangourou", "tatou", "tamanoir", "blaireau", "gecko", "hibou", "perruche", "pythons", "dromadaire", "elephant", "tarsier", "cachalot"};
+char* nourriture_moyen[MOT_MAX] = {"lasagne", "parmesan", "sashimi", "quinoa", "couscous", "artichaut", "brocolis", "champignon", "pamplemousse", "mangoustan", "fruitdepasse", "grenadine", "choufleur", "asperges", "framboises", "aubergines", "courgettes", "framboises", "groseilles", "gnocchis"};
+char* musique_moyen[MOT_MAX] = {"symphonique", "xylophoniste", "violoncelle", "accordeoniste", "tambourin", "contrebassiste", "soprano", "saxophoniste", "clarinettiste", "trompettiste", "flutiste", "harmoniciste", "hautbois", "clavicule", "mandoline", "glockenspiel", "guitariste", "bassiste", "tromboniste", "cornemuse"};
+char* film_moyen[MOT_MAX] = {"interstellar", "blackpanther", "jumanji", "wonderwoman", "transformers", "hungergames", "gladiator", "pocahontas", "braveheart", "cinderella", "inception", "jurassicpark", "blackhawkdown", "amadeus", "terminator", "apocalypsenow", "revenant", "schindlerslist", "incredibles", "spiritedaway"};
+char* ecole_moyen[MOT_MAX] = {"bibliothecaire", "mathematiques", "experimentation", "laboratoire", "etudiant", "bibliographie", "professoral", "enseignement", "diplome", "education", "laboratoire", "connaissance", "microscope", "cursus", "lycee", "universite", "philosophie", "biologie", "geographie", "pedagogique"};
+char* espace_moyen[MOT_MAX] = {"astrophysique", "constellation", "nebuleuse", "supernova", "exoplanete", "cosmologie", "astronomique", "spatiotemporel", "galaxien", "astrometrie", "parallaxe", "gravite", "universel", "cosmonaute", "constellations", "heliopause", "teleportation", "antimatiere", "quasar", "extraterrestre"};
+
+char* animal_difficile[MOT_MAX] = {"hippopotamus", "platypus", "anteater", "armadillo", "chameleon", "orangutan", "rhinoceros", "ocelot", "lemur", "quokka", "tapir", "gazelle", "axolotl", "anteater", "cockatoo", "cassowary", "marmoset", "okapi", "serval", "mongoose"};
+char* nourriture_difficile[MOT_MAX] = {"goulash", "souffle", "sashimi", "quinoa", "couscous", "artichoke", "brusselsprout", "pomegranate", "eggplant", "watercress", "beetroot", "cantaloupe", "escargot", "maraschino", "sauerkraut", "coqauvin", "vinaigrette", "guacamole", "taramasalata", "framboises"};
+char* musique_difficile[MOT_MAX] = {"philharmonic", "bouzouki", "contrabassoon", "sitarist", "xylophonist", "oboeist", "hurdygurdy", "harpsichordist", "thereminist", "trombonist", "balalaika", "sousaphone", "melodica", "dulcimer", "cimbalom", "didgeridoo", "calliope", "appassionato", "serenata", "symphonique"};
+char* film_difficile[MOT_MAX] = {"schindlerslist", "inception", "bladerunner", "pulpfiction", "ameliepoulain", "intouchables", "theshawshankredemption", "apocalypsenow", "braveheart", "gladiator", "reservoirdogs", "incredibles", "therevenant", "whiplash", "ingloriousbasterds", "djangounchained", "amadeus", "interstellar", "blackpanther", "jumanji"};
+char* ecole_difficile[MOT_MAX] = {"philosophical", "bibliographical", "experimentalist", "paleontological", "philological", "electromagnetism", "mathematician", "biotechnology", "psychoanalysis", "quantummechanics", "astrophysicist", "entomologist", "microbiologist", "geophysicist", "epistemology", "anthropology", "archaeologist", "paleobotanist", "neuropsychology", "kinesiology"};
+char* espace_difficile[MOT_MAX] = {"astrophysicist", "extraterrestrial", "cosmogony", "astrobiology", "quasar", "galacticcluster", "supernovaremnant", "multiverse", "hyperspace", "nebularhypothesis", "stellarparallax", "gravitationalwaves", "intergalactic", "photovoltaiceffect", "luminiferousaether", "quantumtunnelling", "complexcosmic", "quantumentanglement", "nebuloustheory", "exoplanetary"};
+
+
+char* mot_aleatoire( int t, int d) {
+
+    srand(time(NULL));
+    int i = rand() % MOT_MAX;
+
+    switch( t )
+    {
+    case 1:
+        switch( d )
+        {
+        case 1: return animal_facile[i] ;
+        case 2: return animal_moyen[i] ;
+        case 3: return animal_difficile[i] ;
+        default: return animal_moyen[i] ;
+        }
+    case 2:
+        switch( d )
+        {
+        case 1: return nourriture_facile[i] ;
+        case 2: return nourriture_moyen[i] ;
+        case 3: return nourriture_difficile[i] ;
+        default: return nourriture_moyen[i] ;
+        }
+    case 3:
+        switch( d )
+        {
+        case 1: return film_facile[i] ;
+        case 2: return film_moyen[i] ;
+        case 3: return film_difficile[i] ;
+        default: return film_moyen[i] ;
+        }
+    case 4:
+        switch( d )
+        {
+        case 1: return musique_facile[i] ;
+        case 2: return musique_moyen[i] ;
+        case 3: return musique_difficile[i] ;
+        default: return musique_moyen[i] ;
+        }
+    case 5:
+        switch( d )
+        {
+        case 1: return ecole_facile[i] ;
+        case 2: return ecole_moyen[i] ;
+        case 3: return ecole_difficile[i] ;
+        default: return ecole_moyen[i] ;
+        }
+    case 6:
+        switch( d )
+        {
+        case 1: return espace_facile[i] ;
+        case 2: return espace_moyen[i] ;
+        case 3: return espace_difficile[i] ;
+        default: return espace_moyen[i] ;
+        }
+    
+    default: return liste_mots_default[i] ;
+    }
+}

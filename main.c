@@ -37,6 +37,7 @@ void game() {
             system("clear");
             pendu(choix_incorrect);
             printf("CONGRATULATIONS ! YOU FOUND THE WORD !: %s\n", mot);
+            win() ;
             break;
         }
     }
